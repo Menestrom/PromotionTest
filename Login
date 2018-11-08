@@ -1,0 +1,23 @@
+using OpenQA.Selenium;
+using PromotionPlan;
+
+namespace PromotionPlanTests
+{
+    public class LoginPage
+    {
+        private WebElement _element;
+        public LoginPage(WebElement element)
+        {
+            _element = element;
+        }
+        WebElement userNameField => _element.FindByXpath("//*[@name=\"login\"]");
+        WebElement passwordField => _element.FindByXpath("//*[@name=\"password\"]");
+
+        public Login1 EnterUserNameAndPassword(string username, string password)
+        {
+            userNameField.SendKeys(username);
+            passwordField.SendKeys(password);
+            return new Login1(_element);
+        }
+    }
+}
