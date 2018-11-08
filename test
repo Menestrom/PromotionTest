@@ -1,0 +1,33 @@
+namespace PromotionPlanTests
+{
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    [Parallelizable]
+    public class LoginInvalidPassword
+    {
+        public LoginPage loginPage;
+        public WebElement element = new WebElement();
+
+        [OneTimeSetUp]
+        public void Initialize()
+        {
+            LoginPage loginPage = new LoginPage(element);
+        }
+        [TestCase]
+        public void InvalidPasword1()
+        {
+
+            loginPage.EnterUserNameAndPassword(Config.Credentials.Login.correct, Config.Credentials.Password.incorrect).ClickLogin();
+        }
+        [TestCase]
+        public void InvalidPasword2()
+        {
+            loginPage.EnterUserNameAndPassword(Config.Credentials.Login.correct, Config.Credentials.Password.incorrect).ClickLogin();
+        }
+        [OneTimeTearDown]
+        public void Close()
+        {
+            // driver.Close();
+        }
+    }
+}
